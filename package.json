@@ -1,0 +1,28 @@
+{
+  "name": "classist",
+  "version": "1.0.0",
+  "description": "Manage classes on an element without reguard for external modification.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "^4.0.1"
+  },
+  "dependencies": {
+    "flatten": "0.0.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoryNunn/classist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KoryNunn/classist/issues"
+  },
+  "homepage": "https://github.com/KoryNunn/classist#readme"
+}
