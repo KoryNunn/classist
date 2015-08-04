@@ -143,3 +143,53 @@ test('0 class', function(t){
     t.equal(classes(), '');
     t.equal(element.className, '');
 });
+
+test('number class', function(t){
+    t.plan(3);
+
+    var element = {className: ''};
+
+    var classes = classist(element);
+
+    t.equal(classes(), '');
+
+    classes(1);
+
+    t.equal(classes(), '1');
+    t.equal(element.className, '1');
+});
+
+test('undefined class', function(t){
+    t.plan(5);
+
+    var element = {className: ''};
+
+    var classes = classist(element);
+
+    t.equal(classes(), '');
+
+    classes(undefined);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+
+    classes([undefined]);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+});
+
+test('class needs trim', function(t){
+    t.plan(3);
+
+    var element = {className: ''};
+
+    var classes = classist(element);
+
+    t.equal(classes(), '');
+
+    classes('foo  ');
+
+    t.equal(classes(), 'foo');
+    t.equal(element.className, 'foo');
+});

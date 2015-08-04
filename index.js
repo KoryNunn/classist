@@ -4,26 +4,29 @@ module.exports = function(element){
     var lastClasses = [];
 
     return function(classes){
+
         if(!arguments.length){
             return lastClasses.join(' ');
         }
 
+        function cleanClassName(result, className){
+            if(typeof className === 'string' && className.match(/\s/)){
+                className = className.split(' ');
+            }
 
-        if(!classes){
-            classes = [];
+            if(Array.isArray(className)){
+                return result.concat(className.reduce(cleanClassName, []));
+            }
+
+            if(className != null && className !== ''){
+                result.push(String(className).trim());
+            }
+
+            return result;
         }
 
-
-
-        if(!Array.isArray(classes)){
-            classes = [classes];
-        }
-
-        classes = flatten(classes).join(' ').split(' ').filter(function(x){
-            return x != null && x != '';
-        });
-
-        var currentClasses = element.className ? element.className.split(' ') : [];
+        var newClasses = cleanClassName([], classes),
+            currentClasses = element.className ? element.className.split(' ') : [];
 
         lastClasses.map(function(className){
             if(!className){
@@ -32,13 +35,13 @@ module.exports = function(element){
 
             var index = currentClasses.indexOf(className);
 
-            currentClasses.splice(index, 1);
+            if(~index){
+                currentClasses.splice(index, 1);
+            }
         });
 
-
-        currentClasses = currentClasses.concat(classes);
-        lastClasses = classes;
-
+        currentClasses = currentClasses.concat(newClasses);
+        lastClasses = newClasses;
 
         element.className = currentClasses.join(' ');
     };
