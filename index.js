@@ -1,5 +1,3 @@
-var flatten = require('flatten');
-
 module.exports = function(element){
     var lastClasses = [];
 
