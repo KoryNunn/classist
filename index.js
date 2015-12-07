@@ -18,7 +18,7 @@ module.exports = function(element){
                 return result.concat(className.reduce(cleanClassName, []));
             }
 
-            if(className != null && className !== ''){
+            if(className != null && className !== '' && className !== false){
                 result.push(String(className).trim());
             }
 
