@@ -16,7 +16,7 @@ module.exports = function(element){
                 return result.concat(className.reduce(cleanClassName, []));
             }
 
-            if(className != null && className !== '' && className !== false){
+            if(className != null && className !== '' && typeof className !== 'boolean'){
                 result.push(String(className).trim());
             }
 
