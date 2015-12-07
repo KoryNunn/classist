@@ -11,9 +11,7 @@
   "devDependencies": {
     "tape": "^4.0.1"
   },
-  "dependencies": {
-    "flatten": "0.0.1"
-  },
+  "dependencies": {},
   "directories": {
     "test": "test"
   },

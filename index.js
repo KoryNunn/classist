@@ -1,5 +1,3 @@
-var flatten = require('flatten');
-
 module.exports = function(element){
     var lastClasses = [];
 
@@ -18,7 +16,7 @@ module.exports = function(element){
                 return result.concat(className.reduce(cleanClassName, []));
             }
 
-            if(className != null && className !== ''){
+            if(className != null && className !== '' && typeof className !== 'boolean'){
                 result.push(String(className).trim());
             }
 

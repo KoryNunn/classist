@@ -193,3 +193,43 @@ test('class needs trim', function(t){
     t.equal(classes(), 'foo');
     t.equal(element.className, 'foo');
 });
+
+test('true value class', function(t){
+    t.plan(5);
+
+    var element = {className: ''};
+
+    var classes = classist(element);
+
+    t.equal(classes(), '');
+
+    classes(true);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+
+    classes([true]);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+});
+
+test('false value class', function(t){
+    t.plan(5);
+
+    var element = {className: ''};
+
+    var classes = classist(element);
+
+    t.equal(classes(), '');
+
+    classes(false);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+
+    classes([false]);
+
+    t.equal(classes(), '');
+    t.equal(element.className, '');
+});
