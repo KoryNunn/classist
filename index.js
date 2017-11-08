@@ -38,6 +38,10 @@ module.exports = function(element){
             }
         });
 
+        if(lastClasses.join() === newClasses.join()){
+            return;
+        }
+
         currentClasses = currentClasses.concat(newClasses);
         lastClasses = newClasses;
 

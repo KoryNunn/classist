@@ -233,3 +233,32 @@ test('false value class', function(t){
     t.equal(classes(), '');
     t.equal(element.className, '');
 });
+
+test('no pointless updates', function(t){
+    t.plan(5);
+
+    var element = {};
+    var elementClasses = 'bar';
+
+    Object.defineProperty(element, 'className', {
+        get: function(){
+            return elementClasses;
+        },
+        set: function(value){
+            t.pass('Class updated');
+            return elementClasses = value;
+        }
+    });
+
+    var classes = classist(element);
+
+    classes('foo');
+
+    t.equal(classes(), 'foo');
+    t.equal(element.className, 'bar foo');
+
+    classes(['foo']);
+
+    t.equal(classes(), 'foo');
+    t.equal(element.className, 'bar foo');
+});
